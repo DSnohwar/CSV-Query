@@ -2,4 +2,7 @@ lida
 lida[transformers]
 torch
 streamlit
-python-dotenv**
+python-dotenv
+pandas
+openai
+pillow
