@@ -22,7 +22,8 @@ OPENAI_API_KEY=your_openai_api_key_here
 ## Dependencies
 
 - Streamlit
-- OpenAI GPT-3 Microsoft Lida library
+- OpenAI GPT-3 
+- Microsoft Lida library
 - dotenv
 - pandas
 - openai
