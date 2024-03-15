@@ -42,10 +42,10 @@ if menu == "Summarize your CSV":
     st.subheader("Summarization of your Data")
     file_uploader = st.file_uploader("Upload your CSV", type="csv")
     if file_uploader is not None:
-        path_to_save = "filename.csv"
+        path_to_save = "data.csv"
         with open(path_to_save, "wb") as f:
             f.write(file_uploader.getvalue())
-        summary = lida.summarize("filename.csv", summary_method="default", textgen_config=textgen_config)
+        summary = lida.summarize("data.csv", summary_method="default", textgen_config=textgen_config)
         print(summary)
         # Extract relevant data from the summary dictionary
         data = []
@@ -97,7 +97,7 @@ elif menu == "Generate Visualizations":
     st.subheader("Query your Data to Generate Plots")
     file_uploader = st.file_uploader("Upload your CSV", type="csv")
     if file_uploader is not None:
-        path_to_save = "filename1.csv"
+        path_to_save = "data1.csv"
         with open(path_to_save, "wb") as f:
             f.write(file_uploader.getvalue())
         text_area = st.text_area("Query your Data to Generate Plots", height=200)
@@ -106,7 +106,7 @@ elif menu == "Generate Visualizations":
                 st.info("Your Query: " + text_area)
                 lida = Manager(text_gen=llm("openai"))
                 textgen_config = TextGenerationConfig(n=1, temperature=0.2, use_cache=True)
-                summary = lida.summarize("filename1.csv", summary_method="default", textgen_config=textgen_config)
+                summary = lida.summarize("data1.csv", summary_method="default", textgen_config=textgen_config)
                 user_query = text_area
                 charts = lida.visualize(summary=summary, goal=user_query, textgen_config=textgen_config)
                 image_base64 = charts[0].raster
